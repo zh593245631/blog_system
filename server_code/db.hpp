@@ -11,10 +11,10 @@ namespace blog_system{
     MYSQL* connect_fd = mysql_init(NULL);
       if(mysql_real_connect(connect_fd,"127.0.0.1", "root", "qwerdf123",\
             "blog_system", 3306, NULL, 0) == NULL){
-                 printf("连接失败 %s\n",mysql_error(connect_fd));
+                 printf("数据库连接失败 %s\n",mysql_error(connect_fd));
                  return NULL;
       }
-      printf("连接成功\n");
+      printf("数据库连接成功\n");
       //设置编码格式
       mysql_set_character_set(connect_fd,"utf8");
       return connect_fd;
