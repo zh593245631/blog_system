@@ -1,8 +1,8 @@
-<!doctype html>
+ï»¿<!doctype html>
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=gbk" />
-<title>ÕÅÕ×»ª¸öÈË²©¿Í</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>åšå®¢ç®¡ç†</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="css/base.css" rel="stylesheet">
 <link rel="stylesheet" href="editor.md/css/editormd.css" />
@@ -23,9 +23,9 @@
     <div class="avatar fl"><img src="images/avatar.jpg"></div>
     <div class="guanzhu fl">
       <ul>
-        <li><img src="images/nianling.png"><span>ÉúÈÕ£º1998-05-19</span></li>
-        <li><img src="images/weizhi.png"><span>ÖĞ¹ú¡¤Î÷°²</span></li>
-        <li><img src="images/qq.png"><span>QQ£º1979749784</span></li>
+        <li><img src="images/nianling.png"><span>ç”Ÿæ—¥ï¼š1998-05-19</span></li>
+        <li><img src="images/weizhi.png"><span>ä¸­å›½Â·è¥¿å®‰</span></li>
+        <li><img src="images/qq.png"><span>QQï¼š1979749784</span></li>
         <li><img src="images/weixin.png"><span><img src="images/wxewm.jpg"></span></li>
       </ul>
     </div>
@@ -37,100 +37,101 @@
     <div class="blogbox">
       <ul>
         <li> <i class="feed-avatar"><img src="images/avatar.jpg"></i>
-          <!--²åÖµ±í´ïÊ½-->
-          <h2><a href="/"> {{author}} ¸öÈË²©¿Í£¬ÊôÓÚÎÒµÄĞ¡ÊÀ½ç£¡</a></h2>
-          <p class="feed-info">ÌìÏÂ´óÊÂ£¬±Ø×÷ÓÚÏ¸</p>
+          <!--æ’å€¼è¡¨è¾¾å¼-->
+          <h2><a href="/"> {{author}} ä¸ªäººåšå®¢ï¼Œå±äºæˆ‘çš„å°ä¸–ç•Œï¼</a></h2>
+          <p class="feed-info">å¤©ä¸‹å¤§äº‹ï¼Œå¿…ä½œäºç»†</p>
         </li>
       </ul>
     </div>
         <div class="bloglist" v-for = "blog in blogs">
       <li>
-        <!--v-on:click°Ñµ±Ç°µÄhtml ±êÇ©¹ØÁªÉÏÒ»¸öÊó±êµã»÷ÊÂ¼ş-->
+        <!--v-on:clickæŠŠå½“å‰çš„html æ ‡ç­¾å…³è”ä¸Šä¸€ä¸ªé¼ æ ‡ç‚¹å‡»äº‹ä»¶-->
         <h3><a v-on:click="edit_blog(blog.blog_id)" target="_blank">{{blog.title}}</a></h3>
         <p class="feed-date">
           <span class="fd01">@{{author}}</span>
           <span class="fd01"><a href="/">{{blog.create_time}}</a></span>
           <span class="fd01">{{tag_id2name(blog.tag_id)}}</span>
-          <span v-on:click="delete_blog(blog.blog_id)">É¾³ı</span>
+          <span v-on:click="delete_blog(blog.blog_id)">åˆ é™¤</span>
         </p>
       </li>
       </div>
   </main>
   <aside class="l_box">
     <div class="wdxc">
-      <h2>±êÇ©</h2>
+      <h2>æ ‡ç­¾</h2>
       <ul>
         <li v-for="tag in tags"><a href="#">{{tag.tag_name}}</a></li>
       </ul>
     </div>
     <div class="search">
       <form action="/tuseday/e/search/index.php" method="post" name="searchform" id="searchform">
-        <input name="keyboard" id="keyboard" class="input_text" value="ÇëÊäÈë¹Ø¼ü×Ö´Ê" style="color: rgb(153, 153, 153);" onfocus="if(value=='ÇëÊäÈë¹Ø¼ü×Ö´Ê'){this.style.color='#000';value=''}" onblur="if(value==''){this.style.color='#999';value='ÇëÊäÈë¹Ø¼ü×Ö´Ê'}" type="text">
+        <input name="keyboard" id="keyboard" class="input_text" value="è¯·è¾“å…¥å…³é”®å­—è¯" style="color: rgb(153, 153, 153);" onfocus="if(value=='è¯·è¾“å…¥å…³é”®å­—è¯'){this.style.color='#000';value=''}" onblur="if(value==''){this.style.color='#999';value='è¯·è¾“å…¥å…³é”®å­—è¯'}" type="text">
         <input name="show" value="title" type="hidden">
         <input name="tempid" value="1" type="hidden">
         <input name="tbname" value="news" type="hidden">
-        <input name="Submit" class="input_submit" value="ËÑË÷" type="submit">
+        <input name="Submit" class="input_submit" value="æœç´¢" type="submit">
       </form>
     </div>
     <div class="tuijian">
-      <h2>×î½ü¸üĞÂ</h2>
+      <h2>æœ€è¿‘æ›´æ–°</h2>
       <ul>
-        <li><a href="/tuseday/diary/8.html" title="¸öÈË²©¿Í£¬ÊôÓÚÎÒµÄĞ¡ÊÀ½ç£¡">¸öÈË²©¿Í£¬ÊôÓÚÎÒµÄĞ¡ÊÀ½ç£¡</a></li>
-        <li><a href="/tuseday/diary/19.html" title="Ò»¸öÈıÊ®¶øÁ¢µÄÄĞ³ÌĞòÔ±ÕæÊµ½²Êö£º´úÂë½ÁÂÒÎÒµÄÉú»î">Ò»¸öÈıÊ®¶øÁ¢µÄÄĞ³ÌĞòÔ±ÕæÊµ½²Êö£º´úÂë½ÁÂÒÎÒµÄÉú»î</a></li>
-        <li><a href="/tuseday/diary/1.html" title="¡¶Ñ°Ö®ÂÃ¡·Ò»¸ö¹ØÓÚÂÃÓÎ£¬ÓÎ¼ÇµÄ¸öÈË²©¿Í">¡¶Ñ°Ö®ÂÃ¡·Ò»¸ö¹ØÓÚÂÃÓÎ£¬ÓÎ¼ÇµÄ¸öÈË²©¿Í</a></li>
-        <li><a href="/tuseday/diary/16.html" title="¸öÈË²©¿Í´Ó¼ò²»·±">¸öÈË²©¿Í´Ó¼ò²»·±</a></li>
-        <li><a href="/tuseday/diary/17.html" title="³­Ï®ÃÅ¹ıºó¡ª¡ª¶ªµôĞÄ½á£¬ÖØÊ°×Ô¼º">³­Ï®ÃÅ¹ıºó¡ª¡ª¶ªµôĞÄ½á£¬ÖØÊ°×Ô¼º</a></li>
-        <li><a href="/tuseday/diary/12.html" title="¸öÈË²©¿Í£¬ÎÒÎªÊ²Ã´ÒªÓÃµÛ¹úcms£¿">¸öÈË²©¿Í£¬ÎÒÎªÊ²Ã´ÒªÓÃµÛ¹úcms£¿</a></li>
-        <li><a href="/tuseday/photo/21.html" title="¹Åµä¸öÈË²©¿ÍÄ£°å¡¶Çà×©ÎİéÜ¡·">¹Åµä¸öÈË²©¿ÍÄ£°å¡¶Çà×©ÎİéÜ¡·</a></li>
-        <li><a href="/tuseday/photo/7.html" title="¼òµ¥ÊÖ¹¤Ö½Ãµ¹å">¼òµ¥ÊÖ¹¤Ö½Ãµ¹å</a></li>
+        <li><a href="/tuseday/diary/8.html" title="ä¸ªäººåšå®¢ï¼Œå±äºæˆ‘çš„å°ä¸–ç•Œï¼">ä¸ªäººåšå®¢ï¼Œå±äºæˆ‘çš„å°ä¸–ç•Œï¼</a></li>
+        <li><a href="/tuseday/diary/19.html" title="ä¸€ä¸ªä¸‰åè€Œç«‹çš„ç”·ç¨‹åºå‘˜çœŸå®è®²è¿°ï¼šä»£ç æ…ä¹±æˆ‘çš„ç”Ÿæ´»">ä¸€ä¸ªä¸‰åè€Œç«‹çš„ç”·ç¨‹åºå‘˜çœŸå®è®²è¿°ï¼šä»£ç æ…ä¹±æˆ‘çš„ç”Ÿæ´»</a></li>
+        <li><a href="/tuseday/diary/1.html" title="ã€Šå¯»ä¹‹æ—…ã€‹ä¸€ä¸ªå…³äºæ—…æ¸¸ï¼Œæ¸¸è®°çš„ä¸ªäººåšå®¢">ã€Šå¯»ä¹‹æ—…ã€‹ä¸€ä¸ªå…³äºæ—…æ¸¸ï¼Œæ¸¸è®°çš„ä¸ªäººåšå®¢</a></li>
+        <li><a href="/tuseday/diary/16.html" title="ä¸ªäººåšå®¢ä»ç®€ä¸ç¹">ä¸ªäººåšå®¢ä»ç®€ä¸ç¹</a></li>
+        <li><a href="/tuseday/diary/17.html" title="æŠ„è¢­é—¨è¿‡åâ€”â€”ä¸¢æ‰å¿ƒç»“ï¼Œé‡æ‹¾è‡ªå·±">æŠ„è¢­é—¨è¿‡åâ€”â€”ä¸¢æ‰å¿ƒç»“ï¼Œé‡æ‹¾è‡ªå·±</a></li>
+        <li><a href="/tuseday/diary/12.html" title="ä¸ªäººåšå®¢ï¼Œæˆ‘ä¸ºä»€ä¹ˆè¦ç”¨å¸å›½cmsï¼Ÿ">ä¸ªäººåšå®¢ï¼Œæˆ‘ä¸ºä»€ä¹ˆè¦ç”¨å¸å›½cmsï¼Ÿ</a></li>
+        <li><a href="/tuseday/photo/21.html" title="å¤å…¸ä¸ªäººåšå®¢æ¨¡æ¿ã€Šé’ç –å±‹æªã€‹">å¤å…¸ä¸ªäººåšå®¢æ¨¡æ¿ã€Šé’ç –å±‹æªã€‹</a></li>
+        <li><a href="/tuseday/photo/7.html" title="ç®€å•æ‰‹å·¥çº¸ç«ç‘°">ç®€å•æ‰‹å·¥çº¸ç«ç‘°</a></li>
       </ul>
     </div>
     <div class="tuijian">
-      <h2>µã»÷ÅÅĞĞ</h2>
+      <h2>ç‚¹å‡»æ’è¡Œ</h2>
       <ul>
-        <li><a href="/tuseday/diary/8.html" title="¸öÈË²©¿Í£¬ÊôÓÚÎÒµÄĞ¡ÊÀ½ç£¡">¸öÈË²©¿Í£¬ÊôÓÚÎÒµÄĞ¡ÊÀ½ç£¡</a></li>
-        <li><a href="/tuseday/diary/19.html" title="Ò»¸öÈıÊ®¶øÁ¢µÄÄĞ³ÌĞòÔ±ÕæÊµ½²Êö£º´úÂë½ÁÂÒÎÒµÄÉú»î">Ò»¸öÈıÊ®¶øÁ¢µÄÄĞ³ÌĞòÔ±ÕæÊµ½²Êö£º´úÂë½ÁÂÒÎÒµÄÉú»î</a></li>
-        <li><a href="/tuseday/diary/1.html" title="¡¶Ñ°Ö®ÂÃ¡·Ò»¸ö¹ØÓÚÂÃÓÎ£¬ÓÎ¼ÇµÄ¸öÈË²©¿Í">¡¶Ñ°Ö®ÂÃ¡·Ò»¸ö¹ØÓÚÂÃÓÎ£¬ÓÎ¼ÇµÄ¸öÈË²©¿Í</a></li>
-        <li><a href="/tuseday/diary/16.html" title="¸öÈË²©¿Í´Ó¼ò²»·±">¸öÈË²©¿Í´Ó¼ò²»·±</a></li>
-        <li><a href="/tuseday/diary/17.html" title="³­Ï®ÃÅ¹ıºó¡ª¡ª¶ªµôĞÄ½á£¬ÖØÊ°×Ô¼º">³­Ï®ÃÅ¹ıºó¡ª¡ª¶ªµôĞÄ½á£¬ÖØÊ°×Ô¼º</a></li>
-        <li><a href="/tuseday/diary/12.html" title="¸öÈË²©¿Í£¬ÎÒÎªÊ²Ã´ÒªÓÃµÛ¹úcms£¿">¸öÈË²©¿Í£¬ÎÒÎªÊ²Ã´ÒªÓÃµÛ¹úcms£¿</a></li>
-        <li><a href="/tuseday/photo/21.html" title="¹Åµä¸öÈË²©¿ÍÄ£°å¡¶Çà×©ÎİéÜ¡·">¹Åµä¸öÈË²©¿ÍÄ£°å¡¶Çà×©ÎİéÜ¡·</a></li>
-        <li><a href="/tuseday/photo/7.html" title="¼òµ¥ÊÖ¹¤Ö½Ãµ¹å">¼òµ¥ÊÖ¹¤Ö½Ãµ¹å</a></li>
+        <li><a href="/tuseday/diary/8.html" title="ä¸ªäººåšå®¢ï¼Œå±äºæˆ‘çš„å°ä¸–ç•Œï¼">ä¸ªäººåšå®¢ï¼Œå±äºæˆ‘çš„å°ä¸–ç•Œï¼</a></li>
+        <li><a href="/tuseday/diary/19.html" title="ä¸€ä¸ªä¸‰åè€Œç«‹çš„ç”·ç¨‹åºå‘˜çœŸå®è®²è¿°ï¼šä»£ç æ…ä¹±æˆ‘çš„ç”Ÿæ´»">ä¸€ä¸ªä¸‰åè€Œç«‹çš„ç”·ç¨‹åºå‘˜çœŸå®è®²è¿°ï¼šä»£ç æ…ä¹±æˆ‘çš„ç”Ÿæ´»</a></li>
+        <li><a href="/tuseday/diary/1.html" title="ã€Šå¯»ä¹‹æ—…ã€‹ä¸€ä¸ªå…³äºæ—…æ¸¸ï¼Œæ¸¸è®°çš„ä¸ªäººåšå®¢">ã€Šå¯»ä¹‹æ—…ã€‹ä¸€ä¸ªå…³äºæ—…æ¸¸ï¼Œæ¸¸è®°çš„ä¸ªäººåšå®¢</a></li>
+        <li><a href="/tuseday/diary/16.html" title="ä¸ªäººåšå®¢ä»ç®€ä¸ç¹">ä¸ªäººåšå®¢ä»ç®€ä¸ç¹</a></li>
+        <li><a href="/tuseday/diary/17.html" title="æŠ„è¢­é—¨è¿‡åâ€”â€”ä¸¢æ‰å¿ƒç»“ï¼Œé‡æ‹¾è‡ªå·±">æŠ„è¢­é—¨è¿‡åâ€”â€”ä¸¢æ‰å¿ƒç»“ï¼Œé‡æ‹¾è‡ªå·±</a></li>
+        <li><a href="/tuseday/diary/12.html" title="ä¸ªäººåšå®¢ï¼Œæˆ‘ä¸ºä»€ä¹ˆè¦ç”¨å¸å›½cmsï¼Ÿ">ä¸ªäººåšå®¢ï¼Œæˆ‘ä¸ºä»€ä¹ˆè¦ç”¨å¸å›½cmsï¼Ÿ</a></li>
+        <li><a href="/tuseday/photo/21.html" title="å¤å…¸ä¸ªäººåšå®¢æ¨¡æ¿ã€Šé’ç –å±‹æªã€‹">å¤å…¸ä¸ªäººåšå®¢æ¨¡æ¿ã€Šé’ç –å±‹æªã€‹</a></li>
+        <li><a href="/tuseday/photo/7.html" title="ç®€å•æ‰‹å·¥çº¸ç«ç‘°">ç®€å•æ‰‹å·¥çº¸ç«ç‘°</a></li>
       </ul>
     </div>
     <div class="fenlei">
-      <h2>·ÖÀà</h2>
+      <h2>åˆ†ç±»</h2>
       <ul>
-        <li><a href="/">ĞÂÏÊÊÂ¶ù£¨13£©</a></li>
-        <li><a href="/">ÎÒµÄÈÕ¼Ç£¨8£©</a></li>
-        <li><a href="/">ÎÒµÄÏà²á£¨8£©</a></li>
-        <li><a href="/">Î¢¼ÇÂ¼£¨8£©</a></li>
-        <li><a href="/">ÊÓÆµ£¨8£©</a></li>
+        <li><a href="/">æ–°é²œäº‹å„¿ï¼ˆ13ï¼‰</a></li>
+        <li><a href="/">æˆ‘çš„æ—¥è®°ï¼ˆ8ï¼‰</a></li>
+        <li><a href="/">æˆ‘çš„ç›¸å†Œï¼ˆ8ï¼‰</a></li>
+        <li><a href="/">å¾®è®°å½•ï¼ˆ8ï¼‰</a></li>
+        <li><a href="/">è§†é¢‘ï¼ˆ8ï¼‰</a></li>
       </ul>
     </div>
     <div class="links">
-      <h2>ÓÑÇéÁ´½Ó</h2>
+      <h2>å‹æƒ…é“¾æ¥</h2>
       <ul>
-        <li><a href="http://www.yangqq.com" title="ÑîÇà¸öÈË²©¿Í">ÑîÇà¸öÈË²©¿Í</a></li>
+        <li><a href="http://www.yangqq.com" title="{{author}}ä¸ªäººåšå®¢">{{author}}ä¸ªäººåšå®¢</a></li>
       </ul>
     </div>
   </aside>
 </article>
 <div  v-show = "blog.blog_id != null" v-cloak>
-<article id="blog_view" charset="utf-8">
+<article id="blog_view">
     <textarea>{{blog.content}}</textarea>
 </article>
-<button v-on:click="update_blog(blog.blog_id)">·¢±í</button>
-<button v-on:click="back()">·µ»Ø</button>
+<button v-on:click="update_blog(blog.blog_id)">å‘è¡¨</button>
+<button v-on:click="back()">è¿”å›</button>
 </div>
 <div class="blank"></div>
 <footer>
-  <p>Design by <a href="http://www.yangqq.com" target="_blank">ÑîÇà¸öÈË²©¿Í</a> <a href="/">ÊñICP±¸11002373ºÅ-1</a></p>
+  <p>Design by <a href="#" target="_blank">{{author}}ä¸ªäººåšå®¢</a></p>
 </footer>
 </div>
 <a href="#" class="cd-top">Top</a>
-<!-- ¿ª·¢»·¾³°æ±¾£¬°üº¬ÁËÓĞ°ïÖúµÄÃüÁîĞĞ¾¯¸æ -->
+<!-- å¼€å‘ç¯å¢ƒç‰ˆæœ¬ï¼ŒåŒ…å«äº†æœ‰å¸®åŠ©çš„å‘½ä»¤è¡Œè­¦å‘Š -->
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.6/dist/vue.js"></script>
 <script src="editor.md/lib/marked.min.js"></script>
 <script src="editor.md/lib/prettify.min.js"></script>
 
@@ -144,9 +145,9 @@
 
 <script>
 var app = new Vue({
-  el: '#app', //el ±íÊ¾ app Õâ¸övue ¶ÔÏóºÍÄÄ¸öHTML¹ØÁª
+  el: '#app', //el è¡¨ç¤º app è¿™ä¸ªvue å¯¹è±¡å’Œå“ªä¸ªHTMLå…³è”
   data:{
-    //data ±íÊ¾ËùÓĞĞèÒªÔÚÒ³ÃæÉÏ¶¯Ì¬±ä»¯µÄÊı¾İ
+    //data è¡¨ç¤ºæ‰€æœ‰éœ€è¦åœ¨é¡µé¢ä¸ŠåŠ¨æ€å˜åŒ–çš„æ•°æ®
    author: 'kc',
    blogs:[
    ],
@@ -174,20 +175,20 @@ var app = new Vue({
           if(tag_id != null){
             url = '/blog/?tag_id' + tag_id;
           }
-          // ×îºËĞÄ²Ù×÷£¬ ·ÃÎÊ http ·şÎñÆ÷µÄÊı¾İ
+          // æœ€æ ¸å¿ƒæ“ä½œï¼Œ è®¿é—® http æœåŠ¡å™¨çš„æ•°æ®
           //JQuery
           $.ajax({
             url: url,
             type: "get",
             context:this,
             success: function(data, status){
-                //HTTP ÇëÇó³É¹¦Ö®ºóĞèÒªÖ´ĞĞÕâ¸ö´úÂë
+                //HTTP è¯·æ±‚æˆåŠŸä¹‹åéœ€è¦æ‰§è¡Œè¿™ä¸ªä»£ç 
                 this.blogs = data;
             }
           })
      },
      init(){
-       //1.´Ó·şÎñÆ÷ÉÏ»ñÈ¡ tag
+       //1.ä»æœåŠ¡å™¨ä¸Šè·å– tag
        $.ajax({
          type: "get",
          url: "/tag",
@@ -204,24 +205,24 @@ var app = new Vue({
          type:"get",
          context: this,
          success: function(data,status){
-           //»ñÈ¡markdownÊı¾İ
+           //è·å–markdownæ•°æ®
            this.blog = data;
-           //markdown ×ªhtml
+           //markdown è½¬html
            testEditormdView = editormd.markdownToHTML("blog_view", {
                         markdown        : this.blog.content ,//+ "\r\n" + $("#append-test").text(),
-                        //htmlDecode      : true,       // ¿ªÆô HTML ±êÇ©½âÎö£¬ÎªÁË°²È«ĞÔ£¬Ä¬ÈÏ²»¿ªÆô
+                        //htmlDecode      : true,       // å¼€å¯ HTML æ ‡ç­¾è§£æï¼Œä¸ºäº†å®‰å…¨æ€§ï¼Œé»˜è®¤ä¸å¼€å¯
                         htmlDecode      : "style,script,iframe",  // you can filter tags decode
                         //toc             : false,
                         tocm            : true,    // Using [TOCM]
-                        //tocContainer    : "#custom-toc-container", // ×Ô¶¨Òå ToC ÈİÆ÷²ã
+                        //tocContainer    : "#custom-toc-container", // è‡ªå®šä¹‰ ToC å®¹å™¨å±‚
                         //gfm             : false,
                         //tocDropdown     : true,
-                        // markdownSourceCode : true, // ÊÇ·ñ±£Áô Markdown Ô´Âë£¬¼´ÊÇ·ñÉ¾³ı±£´æÔ´ÂëµÄ Textarea ±êÇ©
+                        // markdownSourceCode : true, // æ˜¯å¦ä¿ç•™ Markdown æºç ï¼Œå³æ˜¯å¦åˆ é™¤ä¿å­˜æºç çš„ Textarea æ ‡ç­¾
                         emoji           : true,
                         taskList        : true,
-                        tex             : true,  // Ä¬ÈÏ²»½âÎö
-                        flowChart       : true,  // Ä¬ÈÏ²»½âÎö
-                        sequenceDiagram : true,  // Ä¬ÈÏ²»½âÎö
+                        tex             : true,  // é»˜è®¤ä¸è§£æ
+                        flowChart       : true,  // é»˜è®¤ä¸è§£æ
+                        sequenceDiagram : true,  // é»˜è®¤ä¸è§£æ
                     });
 
 
@@ -235,7 +236,7 @@ var app = new Vue({
          context: this,
          success: function(data, status){
            this.get_blogs();
-           alert("É¾³ı³É¹¦");
+           alert("åˆ é™¤æˆåŠŸ");
          }
        })
    },
@@ -277,14 +278,14 @@ var app = new Vue({
        context:this,
        success: function(data, status){
          this.get_blogs();
-         alert("Ìá½»³É¹¦");
+         alert("æäº¤æˆåŠŸ");
          this.back();
        }
      })
    }
    }
 });
-//³õÊ¼»¯
+//åˆå§‹åŒ–
 app.init();
 </script>
 </body>

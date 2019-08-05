@@ -1,8 +1,8 @@
-<!doctype html>
+﻿<!doctype html>
 <html>
 <head>
-<meta charset="gbk">
-<title>���׻����˲���</title>
+<meta charset="utf-8">
+<title>张兆华个人博客</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="css/base.css" rel="stylesheet">
 <script src="js/jquery.min.js" type="text/javascript"></script>
@@ -22,103 +22,115 @@
     <div class="avatar fl"><img src="images/avatar.jpg"></div>
     <div class="guanzhu fl">
       <ul>
-        <li><img src="images/nianling.png"><span>���գ�1998-05-19</span></li>
-        <li><img src="images/weizhi.png"><span>�й�������</span></li>
-        <li><img src="images/qq.png"><span>QQ��1979749784</span></li>
+        <li><img src="images/nianling.png"><span>生日：1998-05-19</span></li>
+        <li><img src="images/weizhi.png"><span>中国·西安</span></li>
+        <li><img src="images/qq.png"><span>QQ：1979749784</span></li>
         <li><img src="images/weixin.png"><span><img src="images/wxewm.jpg"></span></li>
       </ul>
     </div>
   </div>
 </header>
 <div id = "app">
-<article v-cloak>
-  <main class="r_box" v-show="blog.blog_id == null">
+<article>
+  <main class="r_box" v-cloak v-show="blog.blog_id == null">
     <div class="blogbox">
       <ul>
         <li> <i class="feed-avatar"><img src="images/avatar.jpg"></i>
-          <!--��ֵ����ʽ-->
-          <h2><a href="/"> {{author}} ���˲��ͣ������ҵ�С���磡</a></h2>
-          <p class="feed-info">���´��£�������ϸ</p>
+          <!--插值表达式-->
+          <h2><a href="/"> {{author}} 个人博客，属于我的小世界！</a></h2>
+          <p class="feed-info">天下大事，必作于细</p>
         </li>
       </ul>
     </div>
         <div class="bloglist" v-for = "blog in blogs">
       <li>
-        <!--v-on:click�ѵ�ǰ��html ��ǩ������һ��������¼�-->
+        <!--v-on:click把当前的html 标签关联上一个鼠标点击事件-->
         <h3><a v-on:click="get_blog(blog.blog_id)" target="_blank">{{blog.title}}</a></h3>
         <p class="feed-date"><span class="fd01">@{{author}}</span><span class="fd01"><a href="/">{{blog.create_time}}</a></span><span class="fd01">{{tag_id2name(blog.tag_id)}}</span></p>
       </li>
       </div>
   </main>
-  <main class="r_box"  id="blog_view" v-show = "blog.blog_id != null"> 
-  </main>
+  <main class="r_box" v-show = "blog.blog_id != null" v-cloak>
+      <div class="newsview">
+        <h3 class="news_title">{{blog.title}}</h3>
+        <div class="bloginfo">
+          <ul>
+            <li class="author">作者：<a href="/">{{author}}</a></li>
+            <li class="timer">时间：{{blog.create_time}}</li>
+          </ul>
+        </div>
+        <div class="tags"><a href="/" target="_blank">{{tag_id2name(blog.tag_id)}}</a></div>
+        <div class="news_con" id="blog_view">
+        </div>
+      </div>
+    </main>
   <aside class="l_box">
-    <div class="wdxc">
-      <h2>��ǩ</h2>
+    <div class="wdxc" v-cloak v-show="blog.blog_id == null">
+      <h2>标签</h2>
       <ul>
         <li v-for="tag in tags"><a href="#">{{tag.tag_name}}</a></li>
       </ul>
     </div>
     <div class="search">
       <form action="/tuseday/e/search/index.php" method="post" name="searchform" id="searchform">
-        <input name="keyboard" id="keyboard" class="input_text" value="������ؼ��ִ�" style="color: rgb(153, 153, 153);" onfocus="if(value=='������ؼ��ִ�'){this.style.color='#000';value=''}" onblur="if(value==''){this.style.color='#999';value='������ؼ��ִ�'}" type="text">
+        <input name="keyboard" id="keyboard" class="input_text" value="请输入关键字词" style="color: rgb(153, 153, 153);" onfocus="if(value=='请输入关键字词'){this.style.color='#000';value=''}" onblur="if(value==''){this.style.color='#999';value='请输入关键字词'}" type="text">
         <input name="show" value="title" type="hidden">
         <input name="tempid" value="1" type="hidden">
         <input name="tbname" value="news" type="hidden">
-        <input name="Submit" class="input_submit" value="����" type="submit">
+        <input name="Submit" class="input_submit" value="搜索" type="submit">
       </form>
     </div>
     <div class="tuijian">
-      <h2>�������</h2>
+      <h2>最近更新</h2>
       <ul>
-        <li><a href="/tuseday/diary/8.html" title="���˲��ͣ������ҵ�С���磡">���˲��ͣ������ҵ�С���磡</a></li>
-        <li><a href="/tuseday/diary/19.html" title="һ����ʮ�������г���Ա��ʵ��������������ҵ�����">һ����ʮ�������г���Ա��ʵ��������������ҵ�����</a></li>
-        <li><a href="/tuseday/diary/1.html" title="��Ѱ֮�á�һ���������Σ��μǵĸ��˲���">��Ѱ֮�á�һ���������Σ��μǵĸ��˲���</a></li>
-        <li><a href="/tuseday/diary/16.html" title="���˲��ʹӼ򲻷�">���˲��ʹӼ򲻷�</a></li>
-        <li><a href="/tuseday/diary/17.html" title="��Ϯ�Ź��󡪡������Ľᣬ��ʰ�Լ�">��Ϯ�Ź��󡪡������Ľᣬ��ʰ�Լ�</a></li>
-        <li><a href="/tuseday/diary/12.html" title="���˲��ͣ���ΪʲôҪ�õ۹�cms��">���˲��ͣ���ΪʲôҪ�õ۹�cms��</a></li>
-        <li><a href="/tuseday/photo/21.html" title="�ŵ���˲���ģ�塶��ש���ܡ�">�ŵ���˲���ģ�塶��ש���ܡ�</a></li>
-        <li><a href="/tuseday/photo/7.html" title="���ֹ�ֽõ��">���ֹ�ֽõ��</a></li>
+        <li><a href="/tuseday/diary/8.html" title="个人博客，属于我的小世界！">个人博客，属于我的小世界！</a></li>
+        <li><a href="/tuseday/diary/19.html" title="一个三十而立的男程序员真实讲述：代码搅乱我的生活">一个三十而立的男程序员真实讲述：代码搅乱我的生活</a></li>
+        <li><a href="/tuseday/diary/1.html" title="《寻之旅》一个关于旅游，游记的个人博客">《寻之旅》一个关于旅游，游记的个人博客</a></li>
+        <li><a href="/tuseday/diary/16.html" title="个人博客从简不繁">个人博客从简不繁</a></li>
+        <li><a href="/tuseday/diary/17.html" title="抄袭门过后——丢掉心结，重拾自己">抄袭门过后——丢掉心结，重拾自己</a></li>
+        <li><a href="/tuseday/diary/12.html" title="个人博客，我为什么要用帝国cms？">个人博客，我为什么要用帝国cms？</a></li>
+        <li><a href="/tuseday/photo/21.html" title="古典个人博客模板《青砖屋檐》">古典个人博客模板《青砖屋檐》</a></li>
+        <li><a href="/tuseday/photo/7.html" title="简单手工纸玫瑰">简单手工纸玫瑰</a></li>
       </ul>
     </div>
     <div class="tuijian">
-      <h2>�������</h2>
+      <h2>点击排行</h2>
       <ul>
-        <li><a href="/tuseday/diary/8.html" title="���˲��ͣ������ҵ�С���磡">���˲��ͣ������ҵ�С���磡</a></li>
-        <li><a href="/tuseday/diary/19.html" title="һ����ʮ�������г���Ա��ʵ��������������ҵ�����">һ����ʮ�������г���Ա��ʵ��������������ҵ�����</a></li>
-        <li><a href="/tuseday/diary/1.html" title="��Ѱ֮�á�һ���������Σ��μǵĸ��˲���">��Ѱ֮�á�һ���������Σ��μǵĸ��˲���</a></li>
-        <li><a href="/tuseday/diary/16.html" title="���˲��ʹӼ򲻷�">���˲��ʹӼ򲻷�</a></li>
-        <li><a href="/tuseday/diary/17.html" title="��Ϯ�Ź��󡪡������Ľᣬ��ʰ�Լ�">��Ϯ�Ź��󡪡������Ľᣬ��ʰ�Լ�</a></li>
-        <li><a href="/tuseday/diary/12.html" title="���˲��ͣ���ΪʲôҪ�õ۹�cms��">���˲��ͣ���ΪʲôҪ�õ۹�cms��</a></li>
-        <li><a href="/tuseday/photo/21.html" title="�ŵ���˲���ģ�塶��ש���ܡ�">�ŵ���˲���ģ�塶��ש���ܡ�</a></li>
-        <li><a href="/tuseday/photo/7.html" title="���ֹ�ֽõ��">���ֹ�ֽõ��</a></li>
+        <li><a href="/tuseday/diary/8.html" title="个人博客，属于我的小世界！">个人博客，属于我的小世界！</a></li>
+        <li><a href="/tuseday/diary/19.html" title="一个三十而立的男程序员真实讲述：代码搅乱我的生活">一个三十而立的男程序员真实讲述：代码搅乱我的生活</a></li>
+        <li><a href="/tuseday/diary/1.html" title="《寻之旅》一个关于旅游，游记的个人博客">《寻之旅》一个关于旅游，游记的个人博客</a></li>
+        <li><a href="/tuseday/diary/16.html" title="个人博客从简不繁">个人博客从简不繁</a></li>
+        <li><a href="/tuseday/diary/17.html" title="抄袭门过后——丢掉心结，重拾自己">抄袭门过后——丢掉心结，重拾自己</a></li>
+        <li><a href="/tuseday/diary/12.html" title="个人博客，我为什么要用帝国cms？">个人博客，我为什么要用帝国cms？</a></li>
+        <li><a href="/tuseday/photo/21.html" title="古典个人博客模板《青砖屋檐》">古典个人博客模板《青砖屋檐》</a></li>
+        <li><a href="/tuseday/photo/7.html" title="简单手工纸玫瑰">简单手工纸玫瑰</a></li>
       </ul>
     </div>
     <div class="fenlei">
-      <h2>����</h2>
+      <h2>分类</h2>
       <ul>
-        <li><a href="/">�����¶���13��</a></li>
-        <li><a href="/">�ҵ��ռǣ�8��</a></li>
-        <li><a href="/">�ҵ���ᣨ8��</a></li>
-        <li><a href="/">΢��¼��8��</a></li>
-        <li><a href="/">��Ƶ��8��</a></li>
+        <li><a href="/">新鲜事儿（13）</a></li>
+        <li><a href="/">我的日记（8）</a></li>
+        <li><a href="/">我的相册（8）</a></li>
+        <li><a href="/">微记录（8）</a></li>
+        <li><a href="/">视频（8）</a></li>
       </ul>
     </div>
     <div class="links">
-      <h2>��������</h2>
+      <h2>友情链接</h2>
       <ul>
-        <li><a href="http://www.yangqq.com" title="������˲���">������˲���</a></li>
+        <li><a href="http://www.yangqq.com" title="杨青个人博客">杨青个人博客</a></li>
       </ul>
     </div>
   </aside>
 </article>
 <div class="blank"></div>
 <footer>
-  <p>Design by <a href="http://www.yangqq.com" target="_blank">������˲���</a> <a href="/">��ICP��11002373��-1</a></p>
+  <p>Design by <a href="#" target="_blank">{{author}}个人博客</a></p>
 </footer>
 </div>
 <a href="#" class="cd-top">Top</a>
-<!-- ���������汾���������а����������о��� -->
+<!-- 开发环境版本，包含了有帮助的命令行警告 -->
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="editor.md/lib/marked.min.js"></script>
 <script src="editor.md/lib/prettify.min.js"></script>
@@ -133,9 +145,9 @@
 
 <script>
 var app = new Vue({
-  el: '#app', //el ��ʾ app ���vue ������ĸ�HTML����
+  el: '#app', //el 表示 app 这个vue 对象和哪个HTML关联
   data:{
-    //data ��ʾ������Ҫ��ҳ���϶�̬�仯������
+    //data 表示所有需要在页面上动态变化的数据
    author: 'kc',
    blogs:[
    ],
@@ -163,20 +175,20 @@ var app = new Vue({
           if(tag_id != null){
             url = '/blog/?tag_id' + tag_id;
           }
-          // ����Ĳ����� ���� http ������������
+          // 最核心操作， 访问 http 服务器的数据
           //JQuery
           $.ajax({
             url: url,
             type: "get",
             context:this,
             success: function(data, status){
-                //HTTP ����ɹ�֮����Ҫִ���������
+                //HTTP 请求成功之后需要执行这个代码
                 this.blogs = data;
             }
           })
      },
      init(){
-       //1.�ӷ������ϻ�ȡ tag
+       //1.从服务器上获取 tag
        $.ajax({
          type: "get",
          url: "/tag",
@@ -193,24 +205,24 @@ var app = new Vue({
          type:"get",
          context: this,
          success: function(data,status){
-           //��ȡmarkdown����
+           //获取markdown数据
            this.blog = data;
-           //markdown תhtml
+           //markdown 转html
            testEditormdView = editormd.markdownToHTML("blog_view", {
                         markdown        : this.blog.content ,//+ "\r\n" + $("#append-test").text(),
-                        //htmlDecode      : true,       // ���� HTML ��ǩ������Ϊ�˰�ȫ�ԣ�Ĭ�ϲ�����
+                        //htmlDecode      : true,       // 开启 HTML 标签解析，为了安全性，默认不开启
                         htmlDecode      : "style,script,iframe",  // you can filter tags decode
                         //toc             : false,
                         tocm            : true,    // Using [TOCM]
-                        //tocContainer    : "#custom-toc-container", // �Զ��� ToC ������
+                        //tocContainer    : "#custom-toc-container", // 自定义 ToC 容器层
                         //gfm             : false,
                         //tocDropdown     : true,
-                        // markdownSourceCode : true, // �Ƿ��� Markdown Դ�룬���Ƿ�ɾ������Դ��� Textarea ��ǩ
+                        // markdownSourceCode : true, // 是否保留 Markdown 源码，即是否删除保存源码的 Textarea 标签
                         emoji           : true,
                         taskList        : true,
-                        tex             : true,  // Ĭ�ϲ�����
-                        flowChart       : true,  // Ĭ�ϲ�����
-                        sequenceDiagram : true,  // Ĭ�ϲ�����
+                        tex             : true,  // 默认不解析
+                        flowChart       : true,  // 默认不解析
+                        sequenceDiagram : true,  // 默认不解析
                     });
 
 
@@ -219,7 +231,7 @@ var app = new Vue({
      }
    },
 });
-//��ʼ��
+//初始化
 app.init();
 </script>
 </body>
