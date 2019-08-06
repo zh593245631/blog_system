@@ -41,7 +41,6 @@ int main()
          if(req_json["title"].empty()
             ||req_json["content"].empty()
             ||req_json["tag_id"].empty()
-            ||req_json["create_time"].empty()
            ){
            // 参数出错， 给用户提示
            printf("请求数据格式失败! %s\n", req.body.c_str());

@@ -15,6 +15,35 @@
   [v-cloak]{
       display:none;
   }
+  input{
+                border: 1px solid #ccc;
+                padding: 7px 0px;
+                border-radius: 3px;
+                padding-left:5px;
+                -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+                box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+                -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+                -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+                transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s
+            }
+            input:focus{
+                    border-color: #66afe9;
+                    outline: 0;
+                    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
+                    box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6)
+            }
+    button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
 </style>
 </head>
 <body>
@@ -64,11 +93,8 @@
       </ul>
     </div>
     <div class="search">
-      <form action="/tuseday/e/search/index.php" method="post" name="searchform" id="searchform">
+      <form action="/blog" method="get" name="searchform" id="searchform">
         <input name="keyboard" id="keyboard" class="input_text" value="请输入关键字词" style="color: rgb(153, 153, 153);" onfocus="if(value=='请输入关键字词'){this.style.color='#000';value=''}" onblur="if(value==''){this.style.color='#999';value='请输入关键字词'}" type="text">
-        <input name="show" value="title" type="hidden">
-        <input name="tempid" value="1" type="hidden">
-        <input name="tbname" value="news" type="hidden">
         <input name="Submit" class="input_submit" value="搜索" type="submit">
       </form>
     </div>
@@ -76,56 +102,42 @@
       <h2>最近更新</h2>
       <ul>
         <li><a href="/tuseday/diary/8.html" title="个人博客，属于我的小世界！">个人博客，属于我的小世界！</a></li>
-        <li><a href="/tuseday/diary/19.html" title="一个三十而立的男程序员真实讲述：代码搅乱我的生活">一个三十而立的男程序员真实讲述：代码搅乱我的生活</a></li>
-        <li><a href="/tuseday/diary/1.html" title="《寻之旅》一个关于旅游，游记的个人博客">《寻之旅》一个关于旅游，游记的个人博客</a></li>
-        <li><a href="/tuseday/diary/16.html" title="个人博客从简不繁">个人博客从简不繁</a></li>
-        <li><a href="/tuseday/diary/17.html" title="抄袭门过后——丢掉心结，重拾自己">抄袭门过后——丢掉心结，重拾自己</a></li>
-        <li><a href="/tuseday/diary/12.html" title="个人博客，我为什么要用帝国cms？">个人博客，我为什么要用帝国cms？</a></li>
-        <li><a href="/tuseday/photo/21.html" title="古典个人博客模板《青砖屋檐》">古典个人博客模板《青砖屋檐》</a></li>
-        <li><a href="/tuseday/photo/7.html" title="简单手工纸玫瑰">简单手工纸玫瑰</a></li>
       </ul>
     </div>
     <div class="tuijian">
       <h2>点击排行</h2>
       <ul>
         <li><a href="/tuseday/diary/8.html" title="个人博客，属于我的小世界！">个人博客，属于我的小世界！</a></li>
-        <li><a href="/tuseday/diary/19.html" title="一个三十而立的男程序员真实讲述：代码搅乱我的生活">一个三十而立的男程序员真实讲述：代码搅乱我的生活</a></li>
-        <li><a href="/tuseday/diary/1.html" title="《寻之旅》一个关于旅游，游记的个人博客">《寻之旅》一个关于旅游，游记的个人博客</a></li>
-        <li><a href="/tuseday/diary/16.html" title="个人博客从简不繁">个人博客从简不繁</a></li>
-        <li><a href="/tuseday/diary/17.html" title="抄袭门过后——丢掉心结，重拾自己">抄袭门过后——丢掉心结，重拾自己</a></li>
-        <li><a href="/tuseday/diary/12.html" title="个人博客，我为什么要用帝国cms？">个人博客，我为什么要用帝国cms？</a></li>
-        <li><a href="/tuseday/photo/21.html" title="古典个人博客模板《青砖屋檐》">古典个人博客模板《青砖屋檐》</a></li>
-        <li><a href="/tuseday/photo/7.html" title="简单手工纸玫瑰">简单手工纸玫瑰</a></li>
       </ul>
     </div>
     <div class="fenlei">
       <h2>分类</h2>
       <ul>
-        <li><a href="/">新鲜事儿（13）</a></li>
-        <li><a href="/">我的日记（8）</a></li>
-        <li><a href="/">我的相册（8）</a></li>
-        <li><a href="/">微记录（8）</a></li>
-        <li><a href="/">视频（8）</a></li>
+        <li><a href="/">个人博客，属于我的小世界！</a></li>
       </ul>
     </div>
     <div class="links">
       <h2>友情链接</h2>
       <ul>
-        <li><a href="http://www.yangqq.com" title="{{author}}个人博客">{{author}}个人博客</a></li>
+          <button v-on:click="edit_blog()">写博客</button>
       </ul>
     </div>
   </aside>
 </article>
 <div  v-show = "blog.blog_id != null" v-cloak>
+      标题: <input  type="text" id="title" />
+      标签: <select class="tag">
+          <option v-for = "tag in tags">{{tag.tag_name}}</option>
+        </select>
 <article id="blog_view">
     <textarea>{{blog.content}}</textarea>
 </article>
-<button v-on:click="update_blog(blog.blog_id)">发表</button>
-<button v-on:click="back()">返回</button>
+    <button v-on:click="update_blog(blog.blog_id)">发表</button>
+    <button v-on:click="back()">返回</button>
 </div>
 <div class="blank"></div>
 <footer>
-  <p>Design by <a href="#" target="_blank">{{author}}个人博客</a></p>
+  <p>Design by <a href="#" target="_blank">个人博客</a></p>
 </footer>
 </div>
 <a href="#" class="cd-top">Top</a>
@@ -168,7 +180,15 @@ var app = new Vue({
             return this.tags[index].tag_name;
           }
         }
-        return "";
+        return "默认";
+     },
+     tag_name2id(tag_name){
+        for(var index in this.tags){
+          if(this.tags[index].tag_name == tag_name){
+            return this.tags[index].tag_id;
+          }
+        }
+        return 0;
      },
      get_blogs(tag_id){
           var url = '/blog';
@@ -243,20 +263,42 @@ var app = new Vue({
    
    edit_blog(blog_id){
      this.blog = {};
-     $.ajax({
-       type: "get",
-       url: "/blog/" + blog_id,
-       context:this,
-       success:function(data, status){
+     if(blog_id){
+      $.ajax({
+        type: "get",
+        url: "/blog/" + blog_id,
+        context:this,
+        success:function(data, status){
          this.blog = data;
          testEditor = editormd("blog_view", {
-                    width   : "90%",
+                    width   : "100%",
                     height  : "720px",
                     syncScrolling : "single",
                     path    : "editor.md/lib/"
                 });
+        $('#title').val(this.blog.title);
+        $(".tag").val(this.tag_id2name(this.blog.tag_id));
        }
      })
+     }
+     else{
+      $.ajax({
+        type: "get",
+        url: "/blog/" + 0,
+        context:this,
+        success:function(data, status){
+         this.blog = data;
+         testEditor = editormd("blog_view", {
+                    width   : "100%",
+                    height  : "720px",
+                    syncScrolling : "single",
+                    path    : "editor.md/lib/"
+                });
+        $('#title').val(this.blog.title);
+        $(".tag").val(this.tag_id2name(this.blog.tag_id));
+       }
+     })
+     }
    },
    back()
    {
@@ -265,14 +307,31 @@ var app = new Vue({
    update_blog(blog_id)
    {
      var content = testEditor.getMarkdown();
+     var title = $('#title').val();
+     var tag_id = this.tag_name2id($(".tag").val());
      var body = {
-          title: this.blog.title,
+          title: title,
           content:content,
-          tag_id:this.blog.tag_id
+          tag_id:tag_id
      }
+     if(blog_id != 0){
+        $.ajax({
+          type: "put",
+          url:"/blog/" + blog_id,
+          data: JSON.stringify(body),
+          contentType: 'application/json; charset=utf-8',
+          context:this,
+          success: function(data, status){
+            this.get_blogs();
+            alert("提交成功");
+          this.back();
+          }
+        })
+     }
+     else{
      $.ajax({
-       type: "put",
-       url:"/blog/" + blog_id,
+       type: "post",
+       url:"/blog",
        data: JSON.stringify(body),
        contentType: 'application/json; charset=utf-8',
        context:this,
@@ -282,7 +341,8 @@ var app = new Vue({
          this.back();
        }
      })
-   }
+     }
+   },
    }
 });
 //初始化

@@ -1,0 +1,2 @@
+ALTER TABLE `blog_table`
+MODIFY COLUMN  `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间' ;

@@ -37,11 +37,10 @@ class BlogTable{
       mysql_real_escape_string(_mysql,to.get(),content.c_str(),content.size());
 
       std::unique_ptr<char> sql(new char[content.size() * 2 + 4096]);
-      sprintf(sql.get(),"insert into blog_table values(null,'%s','%s',%d,'%s')",
+      sprintf(sql.get(),"insert into blog_table values(null,'%s','%s',%d,null)",
               blog["title"].asCString(),
               to.get(),
-              blog["tag_id"].asInt(),
-              blog["create_time"].asCString());
+              blog["tag_id"].asInt());
 
       int ret = mysql_query(_mysql,sql.get());
       if(ret != 0){
@@ -69,6 +68,7 @@ class BlogTable{
         int rows = mysql_num_rows(result);
         for(int i = 0; i < rows; ++i){
           MYSQL_ROW row = mysql_fetch_row(result);
+          if(i == 0)continue;
           Json::Value blog;
           blog["blog_id"] = atoi(row[0]);
           blog["title"] = row[1];
@@ -160,6 +160,22 @@ public:
       printf("插入标签成功！\n");
       return true;
     }
+    bool Update(const Json::Value& tag){
+      char sql[1024 *4] = {0};
+      sprintf(sql,"update tag_table set tag_name='%s' where tag_id = %d",\
+              tag["tag_name"].asCString(),
+              tag["tag_id"].asInt()
+          );
+
+      int ret = mysql_query(_mysql,sql);
+      if(ret != 0){
+        printf("更新博客标签失败！%s\n",mysql_error(_mysql));
+        return false;
+      }
+      printf("更新博客成功!\n");
+      return true;
+
+    }
 
     bool Delete(int32_t tag_id){
       char sql[1024 * 4] = {0};
@@ -185,6 +201,7 @@ public:
       int rows = mysql_num_rows(result);
       for(int i = 0; i < rows; ++i){
         MYSQL_ROW row = mysql_fetch_row(result);
+        if(i == 0)continue;
         Json::Value tag;
         tag["tag_id"] = atoi(row[0]);
         tag["tag_name"] = row[1];

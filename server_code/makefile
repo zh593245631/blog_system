@@ -4,7 +4,7 @@ all:db_test blog_server
 
 db_test:db_test.cc db.hpp
 	g++ $^ -o $@ $(FLAG)
-blog_server:blog_server.cc
+blog_server:blog_server.cc db.hpp
 	g++ $^ -o $@ $(FLAG)
 
 .PHONY:clean
