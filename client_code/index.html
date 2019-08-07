@@ -45,7 +45,6 @@
       <ul id="starlist">
         <li><a href="index.html" id="selected">首页</a></li>
         <li><a href="time.html">新鲜事儿</a></li>
-        <li><a href="share.html">我的相册</a></li>
         <li><a href="admin.html">空间管理</a></li>
         <li><a href="about.html">关于我</a></li>
       </ul>
@@ -94,11 +93,9 @@
       </ul>
     </div>
     <div class="search">
-      <form action="/blog" method="get" name="searchform" id="searchform">
-        <input name="keyboard" id="keyboard" class="input_text" value="请输入关键字词" style="color: rgb(153, 153, 153);" 
-         onfocus="if(value=='请输入关键字词'){this.style.color='#000';value=''}" onblur="if(value==''){this.style.color='#999';value='请输入关键字词'}" type="text">
-        <input name="Submit" class="input_submit" value="搜索" type="submit">
-      </form>
+        <input name="tag_name" id="tag_name" class="input_text" value="请输入标签" style="color: rgb(153, 153, 153);" 
+         onfocus="if(value=='请输入标签'){this.style.color='#000';value=''}" onblur="if(value==''){this.style.color='#999';value='请输入标签'}" type="text">
+        <input name="Submit" class="input_submit" v-on:click="get_blogs()" value="搜索" type="submit">
     </div>
     <div class="links">
       <h2>友情链接</h2>
@@ -153,10 +150,21 @@ var app = new Vue({
         }
         return "默认";
      },
-     get_blogs(tag_id){
+     tag_name2id(tag_name){
+        for(var index in this.tags){
+          if(this.tags[index].tag_name == tag_name){
+            return this.tags[index].tag_id;
+          }
+        }
+        return 0;
+     },
+     get_blogs(){
           var url = '/blog';
-          if(tag_id != null){
-            url = '/blog/?tag_id' + tag_id;
+          //var tag_id = null;
+          var tag_id = this.tag_name2id($('#tag_name').val());
+
+          if(tag_id != 0){
+            url = '/blog?tag_id=' + tag_id;
           }
           // 最核心操作， 访问 http 服务器的数据
           //JQuery
@@ -167,6 +175,8 @@ var app = new Vue({
             success: function(data, status){
                 //HTTP 请求成功之后需要执行这个代码
                 this.blogs = data;
+                if($('#tag_name').val()!= '请输入标签'&&url == '/blog'&&tag_id ==0)
+                  alert("查找失败");
             }
           })
      },

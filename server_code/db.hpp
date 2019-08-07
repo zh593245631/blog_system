@@ -56,7 +56,8 @@ class BlogTable{
       if(tag_id == ""){
         sprintf(sql,"select blog_id,title,tag_id,create_time from blog_table");
       } else {
-        sprintf(sql,"select blog_id,title,tag_id,create_time from blog_table \
+        printf("查找标签为 %d 的博客", std::stoi(tag_id));
+        sprintf(sql,"select blog_id,title,tag_id,create_time from blog_table\
                 where tag_id = %d",std::stoi(tag_id));
       }
       int ret = mysql_query(_mysql,sql);
@@ -68,7 +69,7 @@ class BlogTable{
         int rows = mysql_num_rows(result);
         for(int i = 0; i < rows; ++i){
           MYSQL_ROW row = mysql_fetch_row(result);
-          if(i == 0)continue;
+          if(atoi(row[0]) == 0)continue;
           Json::Value blog;
           blog["blog_id"] = atoi(row[0]);
           blog["title"] = row[1];
