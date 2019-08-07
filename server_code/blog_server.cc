@@ -91,6 +91,7 @@ int main()
   server.Get(R"(/blog/(\d+))",[&blog_table](const Request& req, Response& resp){
       Json::FastWriter writer;
       // 1. 解析过去到 blog_id
+      printf("%s\n",req.matches[1].str().c_str());
       int32_t blog_id = std::stoi(req.matches[1].str());
       printf("查看 id 为 %d 的博客!\n", blog_id);
       // 2. 直接调用数据库操作

@@ -2,11 +2,11 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>kc个人博客</title>
+<title>kc个人空间</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="css/base.css" rel="stylesheet">
 <script src="js/jquery.min.js" type="text/javascript"></script>
-<script type="text/javascript" src="js/comm.js"></script>
+<!--<script type="text/javascript" src="js/comm.js"></script>-->
 <!--[if lt IE 9]>
 <script src="js/modernizr.js"></script>
 <![endif]-->
@@ -14,6 +14,18 @@
   [v-cloak]{
       display:none;
   }
+  button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
 </style>
 </head>
 <body>
@@ -29,6 +41,15 @@
       </ul>
     </div>
   </div>
+  <nav>
+      <ul id="starlist">
+        <li><a href="index.html" id="selected">首页</a></li>
+        <li><a href="time.html">新鲜事儿</a></li>
+        <li><a href="share.html">我的相册</a></li>
+        <li><a href="admin.html">空间管理</a></li>
+        <li><a href="about.html">关于我</a></li>
+      </ul>
+    </nav>
 </header>
 <div id = "app">
 <article>
@@ -37,7 +58,7 @@
       <ul>
         <li> <i class="feed-avatar"><img src="images/avatar.jpg"></i>
           <!--插值表达式-->
-          <h2><a href="/"> {{author}} 个人博客，属于我的小世界！</a></h2>
+          <h2><a href="/"> {{author}} 个人空间，属于我的小世界！</a></h2>
           <p class="feed-info">天下大事，必作于细</p>
         </li>
       </ul>
@@ -61,6 +82,7 @@
         </div>
         <div class="tags"><a href="/" target="_blank">{{tag_id2name(blog.tag_id)}}</a></div>
         <div class="news_con" id="blog_view">
+            <textarea></textarea>
         </div>
       </div>
     </main>
@@ -78,38 +100,19 @@
         <input name="Submit" class="input_submit" value="搜索" type="submit">
       </form>
     </div>
-    <div class="tuijian">
-      <h2>最近更新</h2>
-      <ul>
-        <li><a href="/" title="个人博客，属于我的小世界！">个人博客，属于我的小世界！</a></li>
-      </ul>
-    </div>
-    <div class="tuijian">
-      <h2>点击排行</h2>
-      <ul>
-        <li><a href="/" title="个人博客，属于我的小世界！">个人博客，属于我的小世界！</a></li>
-      </ul>
-    </div>
-    <div class="fenlei">
-      <h2>分类</h2>
-      <ul>
-        <li><a href="/">个人博客，属于我的小世界！</a></li>
-      </ul>
-    </div>
     <div class="links">
       <h2>友情链接</h2>
       <ul>
-        <li><a href="/" title="个人博客">{{author}}个人博客</a></li>
+        <li><a href="/" title="个人空间">kc个人空间</a></li>
       </ul>
     </div>
   </aside>
 </article>
 <div class="blank"></div>
 <footer>
-  <p>Design by <a href="#" target="_blank">个人博客</a></p>
+  <p>Design by <a href="#">个人空间</a></p>
 </footer>
 </div>
-<a href="#" class="cd-top">Top</a>
 <!-- 开发环境版本，包含了有帮助的命令行警告 -->
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="editor.md/lib/marked.min.js"></script>
@@ -148,7 +151,7 @@ var app = new Vue({
             return this.tags[index].tag_name;
           }
         }
-        return "";
+        return "默认";
      },
      get_blogs(tag_id){
           var url = '/blog';
@@ -180,6 +183,8 @@ var app = new Vue({
        })
      },
      get_blog(blog_id){
+       this.blog = {};
+       var testEditormdView;
        $.ajax({
          url: '/blog/' + blog_id,
          type:"get",
@@ -204,11 +209,9 @@ var app = new Vue({
                         flowChart       : true,  // 默认不解析
                         sequenceDiagram : true,  // 默认不解析
                     });
-
-
          }
        })
-     }
+     },
    },
 });
 //初始化

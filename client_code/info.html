@@ -14,47 +14,28 @@
 <![endif]-->
 </head>
 <body>
-<header>
-  <div class="profile">
-    <div class="avatar fl"><img src="images/avatar.jpg"></div>
-    <div class="guanzhu fl">
-      <ul>
-        <li><img src="images/nianling.png"><span> 
-          <script language="javascript">
- function   ages(str)   
-  {   
-        var   r   =   str.match(/^(\d{1,4})(-|\/)(\d{1,2})\2(\d{1,2})$/);     
-        if(r==null)return   false;     
-        var   d=   new   Date(r[1],   r[3]-1,   r[4]);     
-        if   (d.getFullYear()==r[1]&&(d.getMonth()+1)==r[3]&&d.getDate()==r[4])   
-        {   
-              var   Y   =   new   Date().getFullYear();   
-              return("年龄   "+   (Y-r[1])   +"   周岁");   
-        }   
-        return("日期格式错误！");   
-  }   
-  document.write(ages("2015-03-09"));   
-  
-</script></span></li>
-        <li><img src="images/weizhi.png"><span>中国·北京</span></li>
-        <li><img src="images/qq.png"><span>QQ：476847113</span></li>
-        <li><img src="images/weixin.png"><span><img src="images/wxewm.png"></span></li>
-      </ul>
-    </div>
-    <div class="username">Baby的小家</div>
-  </div>
-  <nav>
-    <ul id="starlist">
-      <li><a href="index.html">我的小家</a></li>
-      <li><a href="time.html">新鲜事儿</a></li>
-      <li><a href="list.html">我的日记</a></li>
-      <li><a href="share.html">我的相册</a></li>
-      <li><a href="info.html">微记录</a></li>
-      <li><a href="infopic.html">视频</a></li>
-      <li><a href="about.html">关于我</a></li>
-    </ul>
-  </nav>
-</header>
+    <header>
+        <div class="profile" >
+          <div class="avatar fl"><img src="images/avatar.jpg"></div>
+          <div class="guanzhu fl">
+            <ul>
+              <li><img src="images/nianling.png"><span>生日：1998-05-19</span></li>
+              <li><img src="images/weizhi.png"><span>中国·西安</span></li>
+              <li><img src="images/qq.png"><span>QQ：1979749784</span></li>
+              <li><img src="images/weixin.png"><span><img src="images/wxewm.jpg"></span></li>
+            </ul>
+          </div>
+        </div>
+        <nav>
+            <ul id="starlist">
+              <li><a href="index.html">首页</a></li>
+              <li><a href="time.html">新鲜事儿</a></li>
+              <li><a href="share.html">我的相册</a></li>
+              <li><a href="info.html" id="selected">微记录</a></li>
+              <li><a href="about.html">关于我</a></li>
+            </ul>
+          </nav>
+      </header>
 <article>
   <main class="r_box">
     <div class="newsview">

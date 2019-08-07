@@ -10,10 +10,10 @@ void TestBlogTable()
   bool ret = false;
   Json::Value blog;
   //测试插入
-  blog["title"] = "我的第一篇博客";
-  blog["content"] = "学习'拉啊拉'";
-  blog["tag_id"] = 6;
-  blog_table.Insert(blog);
+  //blog["title"] = "我的第一篇博客";
+  //blog["content"] = "学习'拉啊拉'";
+  //blog["tag_id"] = 6;
+  //blog_table.Insert(blog);
   
   //测试查找
   //Json::Value blogs;
@@ -22,9 +22,9 @@ void TestBlogTable()
   //printf("%s\n",writer.write(blogs).c_str());
   
   //测试查找2
-  //ret = blog_table.SelectOne(1,&blog);
-  //printf("select one %d\n",ret);
-  //printf("blog:%s\n", writer.write(blog).c_str());
+  ret = blog_table.SelectOne(31,&blog);
+  printf("select one %d\n",ret);
+  printf("blog:%s\n", writer.write(blog).c_str());
 
   //测试修改
   //blog["blog_id"] = 1;
@@ -46,10 +46,10 @@ void TestTagTable()
   blog_system::TagTable tag_table(mysql);
   bool ret = false;
   //测试插入
-  Json::Value tag;
-  tag["tag_name"] = "编程语言";
-  ret = tag_table.Insert(tag);
-  printf("insert %d\n",ret);
+  //Json::Value tag;
+  //tag["tag_name"] = "编程语言";
+  //ret = tag_table.Insert(tag);
+  //printf("insert %d\n",ret);
   
   //测试查找
   //Json::Value tags;
@@ -65,7 +65,7 @@ void TestTagTable()
 }
 int main()
 {
-  //TestBlogTable();
-  TestTagTable();
+  TestBlogTable();
+  //TestTagTable();
   return 0;
 }
