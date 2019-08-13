@@ -374,4 +374,6 @@ terminate called after throwing an instance of 'std::invalid_argument'
 查看所有博客
 执行查找博客失败! MySQL server has gone away
 查看所有博客
-执行查找博客失败
+执行查找博客失败terminate called after throwing an instance of 'std::regex_error'
+  what():  regex_error
+数据库连接成功

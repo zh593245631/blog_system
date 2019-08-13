@@ -7,9 +7,6 @@ int main()
 {
   using namespace httplib;
   using namespace blog_system;
-  //3. 创建服务器， 并设置 "路由"(HTTP服务器中的路由)
-  //   方法 + path  ==》》 哪个处理函数关联
-  Server server;
   //1. 连接数据库
   mysql = blog_system::MySQLInit();
   signal(SIGINT, [](int){
@@ -18,6 +15,10 @@ int main()
   //2. 创建相关数据库处理对象
   BlogTable blog_table(mysql);
   TagTable tag_table(mysql);
+  //3. 创建服务器， 并设置 "路由"(HTTP服务器中的路由)
+  //   方法 + path  ==》》 哪个处理函数关联
+  Server server;
+
   // 新增博客
   server.Post("/blog",[&blog_table](const Request& req, Response& resp){
          printf("新增博客\n");
